@@ -1,0 +1,13 @@
+<img src="{{ album.albumLogo }}" height="400px">
+
+<h1>{{ album.albumTitle }}</h1>
+<h3>{{ album.artist }}</h3>
+
+{% if error_message %}
+    <p><strong>{{ error_message  }}</strong></p>
+{% endif %}
+
+<form action="{% url 'music:favorite' album.id %}" method="post">
+    {% csrf_token %}
+    {% comment %}form for favorite must be done -- episode 23 -- 4:20{% endcomment %}
+</form>
