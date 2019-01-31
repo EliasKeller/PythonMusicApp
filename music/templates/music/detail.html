@@ -9,5 +9,14 @@
 
 <form action="{% url 'music:favorite' album.id %}" method="post">
     {% csrf_token %}
-    {% comment %}form for favorite must be done -- episode 23 -- 4:20{% endcomment %}
+    {% for song in album.song_set.all %}
+        <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
+        <label for="song{{ forloop.counter }}">
+            {{ song.songTitle }}
+        {% if song.isFavorite %}
+        <img src="https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/heart-512.png"  alt="favorite" height="15x"/>
+        {% endif %}
+        </label><br>
+    {% endfor %}
+    <input type="submit" value="Favorite">
 </form>
