@@ -3,12 +3,8 @@ from . import views
 
 app_name = 'music'
 urlpatterns = [
-    # /music/
-    path('', views.index, name='index'),
 
-    # /music/<album_id>/
-    path('<int:album_id>/', views.detail, name='detail'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<pk>/', views.DetailView.as_view(), name='detail'),
 
-    # /music/<album_id>/favorite/
-    path('<int:album_id>/favorite/', views.favorite, name='favorite'),
 ]
